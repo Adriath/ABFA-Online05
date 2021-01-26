@@ -5,6 +5,8 @@
  */
 package estructuraDatos;
 
+import utilidades.Color;
+
 /**
  *
  * @author Adrián Arjona
@@ -13,6 +15,8 @@ package estructuraDatos;
 
 public class Cliente {
     
+    // DECLARACIONES
+
     // Declaración atributos de clase
     
     private String id ;
@@ -22,7 +26,7 @@ public class Cliente {
     
     // Declaración del constructor
     
-    public Cliente (String id, String nom, String dir, String tlf){
+   public Cliente (String id, String nom, String dir, String tlf){
         
         this.id = id ;
         nombre = nom ;
@@ -31,9 +35,12 @@ public class Cliente {
         
     }
     
-    // Métodos
+    // ---------- MÉTODOS ------------
+   
     
-    public String getId(){ // Devuelve ID
+   // ID 
+   
+   public String getId(){ // Devuelve ID
         
         return id ;
     }
@@ -42,6 +49,9 @@ public class Cliente {
         
         this.id = id ;
     }
+    
+    
+    // Nombre
     
     public String getNombre(){ // Devuelve nombre
         
@@ -53,6 +63,9 @@ public class Cliente {
         this.nombre = nom ;
     }
     
+    
+    // Dirección
+    
     public String getDireccion(){ // Devuelve dirección
         
         return direccion ;
@@ -62,6 +75,9 @@ public class Cliente {
         
         this.direccion = dir ;
     }
+    
+    
+    // Teléfono
     
     public String getTelefono(){ // Devuelve teléfono
         
@@ -73,5 +89,19 @@ public class Cliente {
         this.telefono = tlf ;
     }
     
+    
+    // SALIDA DE DATOS
+    
+    @Override
+    public String toString(){
         
+        return "------------------------------" + 
+                "\n - Nombre del cliente: " + Color.azul(nombre)+ 
+                "\n - id: " + Color.azul(id) + 
+                "\n - Dirección del cliente: " + Color.azul(direccion)+ 
+                "\n - Teléfono: " + Color.azul(telefono)+
+                "\n------------------------------" ;
+    }
+    
+       
 }
