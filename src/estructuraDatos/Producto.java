@@ -5,6 +5,10 @@
  */
 package estructuraDatos;
 
+import java.util.regex.*;
+import utilidades.Color;
+import utilidades.IO_ES;
+
 /**
  *
  * @author Adrián Arjona
@@ -17,7 +21,7 @@ public class Producto {
     
     // Declaraciones de atributos de clase
     
-    private String codigo ;
+    private static String codigo ;
     private String nombre ;
     private String descripcion ;
     private double precio ;
@@ -33,4 +37,35 @@ public class Producto {
         
     }
     
+    public static boolean comprobarCodigo(String cod){
+    
+        boolean valido ;
+        
+        // Comprobación del número de caracteres.
+        
+        if (cod.length() == 4) // Si tiene los caracteres necesarios aceptará el código y continuará la ejecución.
+        {
+            codigo = cod ;
+        }
+        else
+        {
+            codigo = IO_ES.leerCadena("El código debe tener 4 dígitos: ", 4) ; // Si no tiene los caracteres necesarios los exigirá.
+        }
+        
+        // Comprobación contenido del código.
+        
+        Pattern p = Pattern.compile("apto"); // Formato codigo: 13 dígitos numéricos.
+        Matcher m = p.matcher(codigo);
+        
+        if (m.matches()) {  // Coincide --> true
+            valido = true;
+        }else{              // No coincide --> false
+            valido = false;
+        }
+    
+        return valido;
+    }
+    public static void main(String[] args) {
+        System.out.println(comprobarCodigo("codigo"));
+    }
 }
