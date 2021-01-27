@@ -66,5 +66,38 @@ public class Producto {
         return valido;
     }
     
+    //AQUÍ VAN LOS MÉTODOS anadirUnidades(Integer):Boolean y quitarUnidades(...)
     
+    public static String getCodigo(){ // Devuelve código
+        
+        return codigo ;
+    }
+    
+    public void setCodigo(String cod){ // Almacena código
+        
+        boolean valido ;
+        
+        valido = comprobarCodigo(cod) ;
+        
+        if (valido) 
+        {
+            codigo = cod ;
+            System.out.println("Código almacenado.");
+        }
+        else
+        {
+            codigo = "X" ;
+            System.out.println("X --> El código no es válido.");
+        }
+        
+        
+    }
+    
+    @Override
+    public String toString(){ //PROVISIONAL
+            
+        return codigo + "\n" + nombre + "\n" + descripcion + "\n" + precio + "\n" + unidades ;
+    }
+    
+        
 }
