@@ -44,7 +44,7 @@ public class Producto {
         else //             --> No coincide: se almacena una X representando que no es válido.
         {
             codigo = "X" ;
-            IO_ES.escribirLN("X --> El código del producto no es válido.");
+            IO_ES.escribirLN(Color.rojo("X --> El código del producto no es válido." + "\n"));
         }
         
         
@@ -171,7 +171,31 @@ public class Producto {
     
     public void setPrecio(double precio){ // Almacena precio
         
-        this.precio = precio ;
+        /* NOTA: podría haber creado el método comprobarPrecio() para realizar 
+        la comprobación igual que con el código. Para ceñirme a los métodos que
+        pide el enunciado haré la comprobación sin la creación de dicho método.
+        De esta forma pueden verse dos formas posibles de abordar un mismo problema.
+        */
+        
+        boolean validador = false ;
+        
+        do 
+        {
+            if (precio < 0) //      --> Si el precio es negativo no lo aceptará.
+            {
+                IO_ES.escribirLN(Color.rojo("El precio no puede ser negativo." + "\n"));
+                precio = IO_ES.leerRealLargo("Introduce un precio positivo: ") ;
+            }
+            else
+            {
+                this.precio = precio ; // --> Si el precio es positivo se almacena.
+                IO_ES.escribirLN(Color.verde("Has cambiado el precio del producto." + "\n")) ;
+                validador = true ;
+            }
+            
+        } while (!validador);
+        
+                
     }
     
     public int getUnidades(){ // Devuelve unidades
@@ -182,20 +206,19 @@ public class Producto {
     @Override
     public String toString(){ //PROVISIONAL
             
-        return codigo + "\n" + nombre + "\n" + descripcion + "\n" + precio + "\n" + unidades ;
-        
-//        "------------------------------" + 
-//                "\n - Nombre del cliente: " + Color.azul(nombre)+ 
-//                "\n - id: " + Color.azul(id) + 
-//                "\n - Dirección del cliente: " + Color.azul(direccion)+ 
-//                "\n - Teléfono: " + Color.azul(telefono)+
-//                "\n------------------------------" ;
+        return "------------------------------" + 
+                "\n - Código del producto: " + Color.azul(codigo)+ 
+                "\n - Nombre: " + Color.azul(nombre) + 
+                "\n - Descripción: " + Color.azul(descripcion)+ 
+                "\n - Precio: " + Color.azul(String.valueOf(precio))+
+                "\n - Unidades: " + Color.azul(String.valueOf(unidades))+
+                "\n------------------------------" ;
     }
     
-        public static void main(String[] args) {
+        public static void main(String[] args) { // PRUEBAS
         
-            Producto Hacendado = new Producto("1234567890123", "nom", "des", 1, 2) ;
+            Producto Hacendado = new Producto("1234567890123", "espaguetti", "pasta rica", 4.5, 3);
             System.out.println(Hacendado);
-                        
+                                    
     }
 }
