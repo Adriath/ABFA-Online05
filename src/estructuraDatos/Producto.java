@@ -29,34 +29,64 @@ public class Producto {
     
     public Producto (String cod, String nom, String des, double precio, int uni){
         
-        // Comprobación variable código
+        
+        // Comprobación variable CÓDIGO (debe tener 13 dígitos)
+        
         
         boolean valido ;
         
         valido = comprobarCodigo(cod) ;
         
-        if (valido) // --> Coincide: se almacena.
+        if (valido) //      --> Coincide: se almacena.
         {
-            IO_ES.escribirLN("Código de producto almacenado.");
+            codigo = cod ;
         }
-        else // --> No coincide: se almacena una X representando que no es válido.
+        else //             --> No coincide: se almacena una X representando que no es válido.
         {
             codigo = "X" ;
             IO_ES.escribirLN("X --> El código del producto no es válido.");
         }
         
-        nombre = nom ;
-        descripcion = des ;
-        this.precio = precio ;
-        unidades = uni ;
+        
+        nombre = nom ; // NOMBRE
+        descripcion = des ; // DESCRIPCIÓN
+        
+        
+        // Comprobación de variable PRECIO (no puede ser negativo).
+        
+        
+        if (precio < 0) //      --> Si el precio es negativo se guardará como 0.
+        {
+            this.precio = 0 ;
+        }
+        else
+        {
+            this.precio = precio ; // --> Si el precio es positivo se almacena.
+        }
+        
+        
+        // Comprobación de variable UNIDADES (no puede ser negativa).
+        
+        
+        if (uni < 0) //    --> Si las unidades son negativas se guardarán como 0.
+        {
+            unidades = 0 ;
+        }
+        else
+        {
+            unidades = uni ; // --> Si las unidades son positivas se almacenan.
+        }
         
     }
+    
     
     public static boolean comprobarCodigo(String cod){
     
         boolean valido ;
         
+        
         // Comprobación del número de caracteres.
+        
         
         if (cod.length() == 13) // Si tiene los caracteres necesarios aceptará el código y continuará la ejecución.
         {
@@ -64,10 +94,12 @@ public class Producto {
         }
         else
         {
-            codigo = IO_ES.leerCadena("El código debe tener 13 dígitos: ", 13) ; // Si no tiene los caracteres necesarios los exigirá.
+            codigo = IO_ES.leerCadena("Introduce un código numérico de 13 dígitos: ", 13) ; // Si no tiene los caracteres necesarios los exigirá.
         }
         
+        
         // Comprobación contenido del código.
+        
         
         Pattern p = Pattern.compile("[0-9]{13}"); // Formato codigo: 13 dígitos numéricos.
         Matcher m = p.matcher(codigo);
@@ -91,19 +123,25 @@ public class Producto {
     public void setCodigo(String cod){ // Almacena código
         
         boolean valido ;
+        boolean validador = false;
         
-        valido = comprobarCodigo(cod) ;
-        
-        if (valido) 
+        do 
         {
-            IO_ES.escribirLN("Código de producto almacenado.");
-        }
-        else
-        {
-            codigo = "X" ;
-            IO_ES.escribirLN("X --> El código del producto no es válido.");
-        }
+            valido = comprobarCodigo(cod) ; // --> Comprueba si el código es correcto.
         
+            if (valido) // --> Si es correcto lo almacenenará.
+            {
+                IO_ES.escribirLN(Color.verde("Código de producto almacenado." + "\n")); // --> Si tiene 13 caracteres 
+                validador = true ;
+            }
+            else // --> Si no es correcto volverá a pedirlo hasta que lo sea.
+            {
+                IO_ES.escribirLN(Color.rojo("El código debe estar formado por números." + "\n"));
+            }
+        
+        } while (!validador);
+        
+                
     }
     
     public String getNombre(){ // Devuelve nombre
@@ -158,9 +196,6 @@ public class Producto {
         
             Producto Hacendado = new Producto("1234567890123", "nom", "des", 1, 2) ;
             System.out.println(Hacendado);
-//            Hacendado.setCodigo("1234");
-//            System.out.println(Hacendado);
-            
-            
+                        
     }
 }
