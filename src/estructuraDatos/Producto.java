@@ -204,14 +204,14 @@ public class Producto {
     }
             
     @Override
-    public String toString(){ //PROVISIONAL
+    public String toString(){
             
         return "------------------------------" + 
                 "\n - Código del producto: " + Color.azul(codigo)+ 
                 "\n - Nombre: " + Color.azul(nombre) + 
                 "\n - Descripción: " + Color.azul(descripcion)+ 
-                "\n - Precio: " + Color.azul(String.valueOf(precio))+
-                "\n - Unidades: " + Color.azul(String.valueOf(unidades))+
+                "\n - Precio: " + Color.azul(precio)+
+                "\n - Unidades: " + Color.azul(unidades)+
                 "\n------------------------------" ;
     }
     
