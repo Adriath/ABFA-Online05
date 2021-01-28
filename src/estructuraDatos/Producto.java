@@ -29,7 +29,22 @@ public class Producto {
     
     public Producto (String cod, String nom, String des, double precio, int uni){
         
-        codigo = cod ;
+        // Comprobación variable código
+        
+        boolean valido ;
+        
+        valido = comprobarCodigo(cod) ;
+        
+        if (valido) // --> Coincide: se almacena.
+        {
+            IO_ES.escribirLN("Código de producto almacenado.");
+        }
+        else // --> No coincide: se almacena una X representando que no es válido.
+        {
+            codigo = "X" ;
+            IO_ES.escribirLN("X --> El código del producto no es válido.");
+        }
+        
         nombre = nom ;
         descripcion = des ;
         this.precio = precio ;
@@ -66,7 +81,7 @@ public class Producto {
         return valido;
     }
     
-    //AQUÍ VAN LOS MÉTODOS anadirUnidades(Integer):Boolean y quitarUnidades(...)
+    // --------- AQUÍ VAN LOS MÉTODOS anadirUnidades(Integer):Boolean y quitarUnidades(...) ------------
     
     public static String getCodigo(){ // Devuelve código
         
@@ -81,23 +96,71 @@ public class Producto {
         
         if (valido) 
         {
-            codigo = cod ;
-            System.out.println("Código almacenado.");
+            IO_ES.escribirLN("Código de producto almacenado.");
         }
         else
         {
             codigo = "X" ;
-            System.out.println("X --> El código no es válido.");
+            IO_ES.escribirLN("X --> El código del producto no es válido.");
         }
-        
         
     }
     
+    public String getNombre(){ // Devuelve nombre
+        
+        return nombre ;
+    }
+    
+    public void setNombre(String nom){ // Almacena nombre
+        
+        nombre = nom ;
+    }
+    
+    public String getDescripcion(){ // Devuelve descripción
+        
+        return descripcion ;
+    }
+    
+    public void setDescripcion(String des){ // Almacena descripción
+        
+        descripcion = des ;
+    }    
+    
+    public double getPrecio(){ // Devuelve precio
+        
+        return precio ;
+    }
+    
+    public void setPrecio(double precio){ // Almacena precio
+        
+        this.precio = precio ;
+    }
+    
+    public int getUnidades(){ // Devuelve unidades
+        
+        return unidades ;
+    }
+            
     @Override
     public String toString(){ //PROVISIONAL
             
         return codigo + "\n" + nombre + "\n" + descripcion + "\n" + precio + "\n" + unidades ;
+        
+//        "------------------------------" + 
+//                "\n - Nombre del cliente: " + Color.azul(nombre)+ 
+//                "\n - id: " + Color.azul(id) + 
+//                "\n - Dirección del cliente: " + Color.azul(direccion)+ 
+//                "\n - Teléfono: " + Color.azul(telefono)+
+//                "\n------------------------------" ;
     }
     
+        public static void main(String[] args) {
         
+            Producto Hacendado = new Producto("1234567890123", "nom", "des", 1, 2) ;
+            System.out.println(Hacendado);
+//            Hacendado.setCodigo("1234");
+//            System.out.println(Hacendado);
+            
+            
+    }
 }
