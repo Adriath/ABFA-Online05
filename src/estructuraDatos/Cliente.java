@@ -96,12 +96,12 @@ public class Cliente {
     public String toString(){
         
         return "------------------------------" + 
-                "\n - Nombre del cliente: " + Color.azul(nombre)+ 
                 "\n - id: " + Color.azul(id) + 
+                "\n - Nombre del cliente: " + Color.azul(nombre)+ 
                 "\n - Dirección del cliente: " + Color.azul(direccion)+ 
                 "\n - Teléfono: " + Color.azul(telefono)+
                 "\n------------------------------" ;
     }
     
-       
+      
 }

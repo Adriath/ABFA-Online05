@@ -29,6 +29,25 @@ public class Producto {
     
     public Producto (String cod, String nom, String des, double precio, int uni){
         
+        /* NOTA: 
+        
+        Podría haber creado el método comprobarPrecio() dentro de la clase
+        ValidarDatos (o en ésta misma) para realizar la comprobación igual que 
+        se ha hecho con la variable código. 
+        Para ceñirme a los métodos que pide el enunciado haré la comprobación 
+        sin la creación de dicho método. De esta forma pueden verse dos formas 
+        posibles de abordar un mismo problema. Aplíquese también a la
+        variable unidades.
+        
+        Actualización:
+        
+        He creado dicho método pero lo he dejado comentado para que
+        pueda verse la otra forma en la que se hubiera implementado y esté
+        preparada para usarse en un futuro.
+        
+        Este mismo comentario está en el método setPrecio().
+        */
+        
         
         // Comprobación variable CÓDIGO (debe tener 13 dígitos)
         
@@ -53,7 +72,7 @@ public class Producto {
         
         
         // Comprobación de variable PRECIO (no puede ser negativo).
-        
+
         
         if (precio < 0) //      --> Si el precio es negativo se guardará como 0.
         {
@@ -171,10 +190,13 @@ public class Producto {
     
     public void setPrecio(double precio){ // Almacena precio
         
-        /* NOTA: podría haber creado el método comprobarPrecio() para realizar 
-        la comprobación igual que con el código. Para ceñirme a los métodos que
-        pide el enunciado haré la comprobación sin la creación de dicho método.
-        De esta forma pueden verse dos formas posibles de abordar un mismo problema.
+        /* NOTA: podría haber creado el método comprobarPrecio() dentro de la clase
+        ValidarDatos para realizar la comprobación igual que con el código. 
+        Para ceñirme a los métodos que pide el enunciado haré la comprobación 
+        sin la creación de dicho método. De esta forma pueden verse dos formas 
+        posibles de abordar un mismo problema.
+        
+        Este mismo comentario (ampliado) también está en el constructor.
         */
         
         boolean validador = false ;
@@ -215,10 +237,5 @@ public class Producto {
                 "\n------------------------------" ;
     }
     
-        public static void main(String[] args) { // PRUEBAS
-        
-            Producto Hacendado = new Producto("1234567890123", "espaguetti", "pasta rica", 4.5, 3);
-            System.out.println(Hacendado);
-                                    
-    }
+      
 }
