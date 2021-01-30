@@ -5,7 +5,7 @@
  */
 package estructuraDatos;
 
-import utilidades.Color;
+import utilidades.* ;
 
 /**
  *
@@ -28,7 +28,23 @@ public class Cliente {
     
    public Cliente (String id, String nom, String dir, String tlf){
         
-        this.id = id ;
+        // Comprobación de la variable ID
+       
+        boolean valido ;
+        
+        valido = comprobarCodigo(cod) ;
+        
+        if (valido) //      --> Coincide: se almacena.
+        {
+            codigo = cod ;
+        }
+        else //             --> No coincide: se almacena una X representando que no es válido.
+        {
+            codigo = "X" ;
+            IO_ES.escribirLN(Color.rojo("X --> El código del producto no es válido." + "\n"));
+        }
+        
+        
         nombre = nom ;
         direccion = dir ;
         telefono = tlf ;
@@ -45,9 +61,36 @@ public class Cliente {
         return id ;
     }
     
-    public void setId(String id){ // Almacena ID
+    public void setId(String id){ // Almacena ID (DNI / NIE)
         
-        this.id = id ;
+        boolean valido ;
+        boolean validador = false ;
+        
+        
+        // Comprobación del número de caracteres.
+                
+        do 
+        {
+            
+            if (id.length() == 9) // Si tiene los caracteres necesarios aceptará el código y continuará la ejecución.
+            {
+                valido = ValidarDatos.validarNif(id) ;
+                validador = true ;
+            }
+            else
+            {
+                id = IO_ES.leerCadena("El NIF que has introducido no tiene el número de caracteres válidos. "
+                        + "Normalmente está formado por 8 números y una letra al final (DNI). También puede "
+                        + "estar formado por una letra al principio, 7 números y otra letra al final, como "
+                        + "es el caso de los NIE. Por favor, no uses espacios ni guiones.", 9) ; // Si no tiene los caracteres necesarios los exigirá.
+            }
+            
+        } while (!validador);
+        
+        
+        // 
+        
+    
     }
     
     
