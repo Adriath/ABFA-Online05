@@ -59,6 +59,9 @@ public class ValidarDatos { // Comprueba DNI / NIE de personas físicas
         return valido ; 
     
     }
+    public static void main(String[] args) {
+        System.out.println(validarNif("535"));
+    }
     
     // MÉTODO PARA COMPROBAR LA VARIABLE PRECIO DE LA CLASE PRODUCTO. HAY UNA NOTA EN EL CONSTRUCTOR DE LA CLASE.
     

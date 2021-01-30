@@ -24,31 +24,43 @@ public class Cliente {
     private String direccion ;
     private String telefono ;
     
+    
     // Declaración del constructor
+    
     
    public Cliente (String id, String nom, String dir, String tlf){
         
         // Comprobación de la variable ID
        
         boolean valido ;
+        boolean validador = false;
         
-        valido = comprobarCodigo(cod) ;
-        
-        if (valido) //      --> Coincide: se almacena.
+        do 
         {
-            codigo = cod ;
-        }
-        else //             --> No coincide: se almacena una X representando que no es válido.
-        {
-            codigo = "X" ;
-            IO_ES.escribirLN(Color.rojo("X --> El código del producto no es válido." + "\n"));
-        }
+            valido = ValidarDatos.validarNif(id) ; // --> Comprueba si el NIF es correcto.
+        
+            if (valido) // --> Si es correcto lo almacenenará.
+            {
+                this.id = id ;
+                validador = true ;
+            }
+            else // --> Si no es correcto volverá a pedirlo hasta que lo sea.
+            {
+//                id = IO_ES.leerCadena("Introduzca de nuevo el DNI/NIE. Por favor, no use espacios ni guiones: " , 9) ; // Si no tiene los caracteres necesarios los exigirá.
+            }
+        
+        } while (!validador);
         
         
-        nombre = nom ;
-        direccion = dir ;
-        telefono = tlf ;
+        nombre = nom ; //       NOMBRE
+        direccion = dir ; //    DIRECCIÓN
+        telefono = tlf ; //     TELÉFONO
         
+    }
+   
+    public static void main(String[] args) {
+        Cliente pepe = new Cliente("1234", "Adrián", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
+        System.out.println(pepe);
     }
     
     // ---------- MÉTODOS ------------
@@ -62,34 +74,8 @@ public class Cliente {
     }
     
     public void setId(String id){ // Almacena ID (DNI / NIE)
-        
-        boolean valido ;
-        boolean validador = false ;
-        
-        
-        // Comprobación del número de caracteres.
-                
-        do 
-        {
-            
-            if (id.length() == 9) // Si tiene los caracteres necesarios aceptará el código y continuará la ejecución.
-            {
-                valido = ValidarDatos.validarNif(id) ;
-                validador = true ;
-            }
-            else
-            {
-                id = IO_ES.leerCadena("El NIF que has introducido no tiene el número de caracteres válidos. "
-                        + "Normalmente está formado por 8 números y una letra al final (DNI). También puede "
-                        + "estar formado por una letra al principio, 7 números y otra letra al final, como "
-                        + "es el caso de los NIE. Por favor, no uses espacios ni guiones.", 9) ; // Si no tiene los caracteres necesarios los exigirá.
-            }
-            
-        } while (!validador);
-        
-        
-        // 
-        
+
+        this.id=id;
     
     }
     
@@ -139,7 +125,7 @@ public class Cliente {
     public String toString(){
         
         return "------------------------------" + 
-                "\n - id: " + Color.azul(id) + 
+                "\n - Id: " + Color.azul(this.id) + 
                 "\n - Nombre del cliente: " + Color.azul(nombre)+ 
                 "\n - Dirección del cliente: " + Color.azul(direccion)+ 
                 "\n - Teléfono: " + Color.azul(telefono)+
