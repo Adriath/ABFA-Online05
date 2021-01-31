@@ -48,8 +48,8 @@ public class Cliente {
                 }
                 else
                 {
-                    IO_ES.escribirLN(Color.rojo("El NIF introducido no es correcto. Por favor, siga las instrucciones." + "\n"));
-                    IO_ES.escribirLN("Inténtelo de nuevo: ");
+                    IO_ES.escribirLN(Color.rojo("El NIF introducido no es válido." + "\n"));
+                    id = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ", 9) ;
                 }
             }
             else
@@ -72,7 +72,7 @@ public class Cliente {
     }
    
     public static void main(String[] args) {
-        Cliente pepe = new Cliente("5358", "Adrián", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
+        Cliente pepe = new Cliente("", "Adrián", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
         System.out.println(pepe);
     }
     
