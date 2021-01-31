@@ -6,6 +6,7 @@
 package estructuraDatos;
 
 import utilidades.* ;
+import java.util.regex.* ;
 
 /**
  *
@@ -30,29 +31,29 @@ public class Cliente {
     
    public Cliente (String id, String nom, String dir, String tlf){
         
-        // Comprobación de la variable ID
+        // Comprobación de la variable ID (el NIF debe ser válido)
        
         boolean valido ;
         boolean validador = false ;
         
         do {
             
-            if (id.length() == 9) 
+            if (id.length() == 9) // --> Si el ID tiene 9 caractes...
             {
-                valido = ValidarDatos.validarNif(id) ;
+                valido = ValidarDatos.validarNif(id) ; // --> ... iniciará la validación.
                 
-                if (valido) 
+                if (valido) // --> Si es válido lo almacenará.
                 {
                     this.id = id;
                     validador = true ;
                 }
-                else
+                else // --> Si no es válido lo pedirá de nuevo. Solamente lo aceptará si contiene 9 caracteres.
                 {
                     IO_ES.escribirLN(Color.rojo("El NIF introducido no es válido." + "\n"));
                     id = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ", 9) ;
                 }
             }
-            else
+            else // --> Si directamente no tiene 9 caracteres no iniciará la validación. Explicará el formato y volverá a pedir el NIF.
             {
                 IO_ES.escribirLN(Color.rojo("El NIF que ha introducido no tiene el número de caracteres válidos.")) ;
                 IO_ES.escribirLN(Color.rojo("Normalmente está formado por 8 números y una letra al final (DNI). ")) ;
@@ -64,15 +65,37 @@ public class Cliente {
        } while (!validador);
        
         
+        //Comprobración de la variable NOMBRE. (No puede estar vacío)
         
-        nombre = nom ; //       NOMBRE
+        
+        validador = false ;
+        
+        do 
+        {
+         
+            if (nom.matches("\\S+")) //     --> Si el nombre no está vacío, se almacena.
+            {
+               nombre = nom ;
+               validador = true ;
+            }
+            else //                         --> Si está vacío se volverá a pedir.
+            {
+                IO_ES.escribirLN(Color.rojo("El nombre no puede estar vacío." + "\n")) ;
+                nom = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ") ;
+            }
+            
+            
+        } while (!validador);
+       
+        
+        
         direccion = dir ; //    DIRECCIÓN
         telefono = tlf ; //     TELÉFONO
         
     }
    
     public static void main(String[] args) {
-        Cliente pepe = new Cliente("", "Adrián", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
+        Cliente pepe = new Cliente("53581573z", "", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
         System.out.println(pepe);
     }
     
