@@ -31,7 +31,9 @@ public class Cliente {
     
    public Cliente (String id, String nom, String dir, String tlf){
         
+       
         // Comprobación de la variable ID (el NIF debe ser válido)
+        
        
         boolean valido ;
         boolean validador = false ;
@@ -73,31 +75,73 @@ public class Cliente {
         do 
         {
          
-            if (nom.matches("\\S+")) //     --> Si el nombre no está vacío, se almacena.
+            if (nom.matches("\\S.{1,}")) //     --> Si el nombre no está vacío (ni comienza por espacio), se almacena.
             {
                nombre = nom ;
                validador = true ;
             }
             else //                         --> Si está vacío se volverá a pedir.
             {
-                IO_ES.escribirLN(Color.rojo("El nombre no puede estar vacío." + "\n")) ;
+                IO_ES.escribirLN(Color.rojo("El nombre no puede estar vacío ni comenzar con un espacio." + "\n")) ;
                 nom = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ") ;
             }
             
             
         } while (!validador);
+        
        
+        //Comprobración de la variable DIRECCIÓN. (No puede estar vacía)
         
         
-        direccion = dir ; //    DIRECCIÓN
-        telefono = tlf ; //     TELÉFONO
+        validador = false ;
+        
+        do 
+        {
+         
+            if (dir.matches("\\S.{1,}")) //     --> Si la dirección no está vacía (ni comienza por espacio), se almacena.
+            {
+               direccion = dir ;
+               validador = true ;
+            }
+            else //                         --> Si está vacía se volverá a pedir.
+            {
+                IO_ES.escribirLN(Color.rojo("La dirección no puede estar vacía ni comenzar con un espacio." + "\n")) ;
+                dir = IO_ES.leerCadena("Introdúzcala de nuevo, por favor: ") ;
+            }
+            
+            
+        } while (!validador);
+        
+        
+        //Comprobración de la variable TELÉFONO. (No puede estar vacío)
+        
+        
+        validador = false ;
+        
+        do 
+        {
+         
+            if (tlf.matches("\\S.{1,}")) //     --> Si el teléfono no está vacío (ni comenzar por espacio), se almacena.
+            {
+               telefono = tlf ;
+               validador = true ;
+            }
+            else //                         --> Si está vacío se volverá a pedir.
+            {
+                IO_ES.escribirLN(Color.rojo("El teléfono no puede estar vacío ni comenzar con un espacio." + "\n")) ;
+                tlf = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ") ;
+            }
+            
+            
+        } while (!validador);
         
     }
    
     public static void main(String[] args) {
-        Cliente pepe = new Cliente("53581573z", "", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
+        Cliente pepe = new Cliente("53581573z", "Francisco Adrián Arjona Bravo", "C/ Pablo Ruiz Picasso, 6", "669220844") ;
         System.out.println(pepe);
     }
+    
     
     // ---------- MÉTODOS ------------
    
