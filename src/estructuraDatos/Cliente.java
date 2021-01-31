@@ -137,26 +137,15 @@ public class Cliente {
         
     }
    
-    public static void main(String[] args) {
-        Cliente pepe = new Cliente("53581573z", "Francisco Adrián Arjona Bravo", "C/ Pablo Ruiz Picasso, 6", "669220844") ;
-        System.out.println(pepe);
-    }
     
-    
-    // ---------- MÉTODOS ------------
+    // ------------------ MÉTODOS ---------------------
    
     
-   // ID 
+   // ID
    
    public String getId(){ // Devuelve ID
         
         return id ;
-    }
-    
-    public void setId(String id){ // Almacena ID (DNI / NIE)
-
-        this.id=id;
-    
     }
     
     
@@ -167,11 +156,7 @@ public class Cliente {
         return nombre ;
     }
     
-    public void setNombre(String nom){ // Almacena nombre
         
-        this.nombre = nom ;
-    }
-    
     
     // Dirección
     
@@ -182,7 +167,25 @@ public class Cliente {
     
     public void setDireccion(String dir){ // Almacena dirección
         
-        this.direccion = dir ;
+        boolean validador = false ;
+        
+        do 
+        {
+         
+            if (dir.matches("\\S.{1,}")) //     --> Si la dirección no está vacía (ni comienza por espacio), se almacena.
+            {
+               direccion = dir ;
+               IO_ES.escribirLN(Color.verde("La dirección ha sido cambiada con éxito." + "\n")) ;
+               validador = true ;
+            }
+            else //                         --> Si está vacía se volverá a pedir.
+            {
+               IO_ES.escribirLN(Color.rojo("La dirección no puede estar vacía ni comenzar con un espacio." + "\n")) ;
+               dir = IO_ES.leerCadena("Introdúzcala de nuevo, por favor: ") ;
+            }
+            
+            
+        } while (!validador);
     }
     
     
@@ -195,7 +198,25 @@ public class Cliente {
     
     public void setTelefono(String tlf){ // Almacena teléfono
         
-        this.telefono = tlf ;
+        boolean validador = false ;
+        
+        do 
+        {
+         
+            if (tlf.matches("\\S.{1,}")) //     --> Si el teléfono no está vacío (ni comenzar por espacio), se almacena.
+            {
+               telefono = tlf ;
+                IO_ES.escribirLN(Color.verde("El teléfono ha sido cambiado con éxito." + "\n")) ;
+               validador = true ;
+            }
+            else //                         --> Si está vacío se volverá a pedir.
+            {
+                IO_ES.escribirLN(Color.rojo("El teléfono no puede estar vacío ni comenzar con un espacio." + "\n")) ;
+                tlf = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ") ;
+            }
+            
+            
+        } while (!validador);
     }
     
     
@@ -209,7 +230,7 @@ public class Cliente {
                 "\n - Nombre del cliente: " + Color.azul(nombre)+ 
                 "\n - Dirección del cliente: " + Color.azul(direccion)+ 
                 "\n - Teléfono: " + Color.azul(telefono)+
-                "\n------------------------------" ;
+                "\n------------------------------\n" ;
     }
     
       

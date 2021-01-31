@@ -234,7 +234,7 @@ public class Producto {
                 "\n - Descripción: " + Color.azul(descripcion)+ 
                 "\n - Precio: " + Color.azul(precio)+
                 "\n - Unidades: " + Color.azul(unidades)+
-                "\n------------------------------" ;
+                "\n------------------------------\n" ;
     }
     
       
