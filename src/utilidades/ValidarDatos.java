@@ -22,9 +22,7 @@ public class ValidarDatos { // Comprueba DNI / NIE de personas físicas
         
         // Comprobación del número de caracteres. 
         
-        do 
-        {
-            
+                    
             if (nif.length() == 9) // Si tiene los caracteres necesarios aceptará el código y continuará la ejecución.
             {
                 validador = true ;
@@ -37,8 +35,6 @@ public class ValidarDatos { // Comprueba DNI / NIE de personas físicas
                 IO_ES.escribirLN(Color.rojo("es el caso de los NIE." + "\n")) ;
                 nif = IO_ES.leerCadena("Introduzca de nuevo el DNI/NIE. Por favor, no use espacios ni guiones: " , 9) ; // Si no tiene los caracteres necesarios los exigirá.
             }
-            
-        } while (!validador);
         
         
         // Comprobación contenido del código.

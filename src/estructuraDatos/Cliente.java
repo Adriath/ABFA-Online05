@@ -33,23 +33,36 @@ public class Cliente {
         // Comprobación de la variable ID
        
         boolean valido ;
-        boolean validador = false;
+        boolean validador = false ;
         
-        do 
-        {
-            valido = ValidarDatos.validarNif(id) ; // --> Comprueba si el NIF es correcto.
-        
-            if (valido) // --> Si es correcto lo almacenenará.
+        do {
+            
+            if (id.length() == 9) 
             {
-                this.id = id ;
-                validador = true ;
+                valido = ValidarDatos.validarNif(id) ;
+                
+                if (valido) 
+                {
+                    this.id = id;
+                    validador = true ;
+                }
+                else
+                {
+                    IO_ES.escribirLN(Color.rojo("El NIF introducido no es correcto. Por favor, siga las instrucciones." + "\n"));
+                    IO_ES.escribirLN("Inténtelo de nuevo: ");
+                }
             }
-            else // --> Si no es correcto volverá a pedirlo hasta que lo sea.
+            else
             {
-//                id = IO_ES.leerCadena("Introduzca de nuevo el DNI/NIE. Por favor, no use espacios ni guiones: " , 9) ; // Si no tiene los caracteres necesarios los exigirá.
+                IO_ES.escribirLN(Color.rojo("El NIF que ha introducido no tiene el número de caracteres válidos.")) ;
+                IO_ES.escribirLN(Color.rojo("Normalmente está formado por 8 números y una letra al final (DNI). ")) ;
+                IO_ES.escribirLN(Color.rojo("También puede estar formado por una letra al principio, ")) ;
+                IO_ES.escribirLN(Color.rojo("7 números y otra letra al final, como es el caso de los NIE. " + "\n")) ;
+                id = IO_ES.leerCadena("Introdúzcalo de nuevo, por favor: ", 9) ;
             }
-        
-        } while (!validador);
+            
+       } while (!validador);
+       
         
         
         nombre = nom ; //       NOMBRE
@@ -59,7 +72,7 @@ public class Cliente {
     }
    
     public static void main(String[] args) {
-        Cliente pepe = new Cliente("1234", "Adrián", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
+        Cliente pepe = new Cliente("5358", "Adrián", "C/ Pablo Ruiz Picasso , 6", "669220844") ;
         System.out.println(pepe);
     }
     
