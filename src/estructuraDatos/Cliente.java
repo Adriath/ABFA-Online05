@@ -6,10 +6,10 @@
 package estructuraDatos;
 
 import utilidades.* ;
-import java.util.regex.* ;
 
 /**
- *
+ * Esta clase sirve para crear un objeto de tipo Cliente.
+ * 
  * @author Adrián Arjona
  * @version 1.0
  */
@@ -28,6 +28,14 @@ public class Cliente {
     
     // Declaración del constructor
     
+    /**
+     * Constructor de la clase Cliente.
+     * 
+     * @param id tipo String. Identificación única del cliente. Será un NIF válido. (Obligatorio)
+     * @param nom tipo String. Nombre del cliente. No puede estar vacío.
+     * @param dir tipo String. Dirección del cliente. No puede estar vacío.
+     * @param tlf tipo String. Teléfono del cliente. No puede estar vacío.
+     */
     
    public Cliente (String id, String nom, String dir, String tlf){
         
@@ -143,7 +151,13 @@ public class Cliente {
     
    // ID
    
-   public String getId(){ // Devuelve ID
+   /**
+    * Muestra la identificación (NIF) del cliente.
+    * 
+    * @return tipo String. Devuelve el NIF del cliente.
+    */
+   
+   public String getId(){
         
         return id ;
     }
