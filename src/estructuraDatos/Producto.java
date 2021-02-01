@@ -58,7 +58,7 @@ public class Producto {
         do 
         {
             
-            if (cod.length() == 13) 
+            if (cod.length() == 13) // --> Si el código tiene 13 dígitos realizará la comprobación.
             {
             valido = comprobarCodigo(cod) ;
             
@@ -74,7 +74,7 @@ public class Producto {
                     validador = true ;
                 }
             }
-            else
+            else // --> Si no tiene 13 dígitos los pedirá para poder hacer la comprobación.
             {
                 cod = IO_ES.leerCadena(Color.rojo("Introduzca un código de 13 dígitos: "), 13) ;
             }
@@ -158,27 +158,32 @@ public class Producto {
         
         boolean valido ;
         
-        if (uni < 0) 
+        while (uni == 0) // Si las unidades introducidas son igual a 0 se pedirá un número positivo para continuar.
+        {
+            uni = IO_ES.leerInteger(Color.rojo("El 0 no es válido. Introduzca una cantidad positiva: "), 1) ;
+        }
+        
+        if (uni < 0) //             --> Si el número es negativo indicará no se almacenará.
         {
             IO_ES.escribir(Color.rojo("No se ha realizado la actualicación de los datos." + "\n"));
             valido = false ;
         }
-        else
+        else  //                    --> Si el número es positivo, se almacenará.
         {
-            unidades =+ uni ; // ------- HAY QUE ARREGLAR ESTO ------------
+            unidades += uni ;
             valido = true ;
         }
-        
+            
+                
         return valido ;
     }
     
-    
-    
-    public boolean quitarUnidades(int uni){
         
-        
-        
-    }
+//    public boolean quitarUnidades(int uni){
+//        
+//        
+//        
+//    }
     
     // --------- AQUÍ VAN LOS MÉTODOS anadirUnidades(Integer):Boolean y quitarUnidades(...) ------------
     
