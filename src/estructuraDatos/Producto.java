@@ -53,18 +53,38 @@ public class Producto {
         
         
         boolean valido ;
+        boolean validador = false;
         
-        valido = comprobarCodigo(cod) ;
+        do 
+        {
+            
+            if (cod.length() == 13) 
+            {
+            valido = comprobarCodigo(cod) ;
+            
+                 if (valido) //      --> Coincide: se almacena.
+                {
+                    codigo = cod ;
+                    validador = true ;
+                }
+                else //             --> No coincide: se almacena una X representando que no es válido.
+                {
+                    codigo = "X" ;
+                    IO_ES.escribirLN(Color.rojo("X --> El código del producto no es válido." + "\n"));
+                    validador = true ;
+                }
+            }
+            else
+            {
+                cod = IO_ES.leerCadena(Color.rojo("Introduzca un código de 13 dígitos: "), 13) ;
+            }
+            
+        } while (!validador);
         
-        if (valido) //      --> Coincide: se almacena.
-        {
-            codigo = cod ;
-        }
-        else //             --> No coincide: se almacena una X representando que no es válido.
-        {
-            codigo = "X" ;
-            IO_ES.escribirLN(Color.rojo("X --> El código del producto no es válido." + "\n"));
-        }
+        
+        
+        
+        
         
         
         nombre = nom ; // NOMBRE
@@ -130,6 +150,34 @@ public class Producto {
         }
     
         return valido;
+    }
+    
+   
+    
+    public boolean anadirUnidades(int uni){
+        
+        boolean valido ;
+        
+        if (uni < 0) 
+        {
+            IO_ES.escribir(Color.rojo("No se ha realizado la actualicación de los datos." + "\n"));
+            valido = false ;
+        }
+        else
+        {
+            unidades =+ uni ; // ------- HAY QUE ARREGLAR ESTO ------------
+            valido = true ;
+        }
+        
+        return valido ;
+    }
+    
+    
+    
+    public boolean quitarUnidades(int uni){
+        
+        
+        
     }
     
     // --------- AQUÍ VAN LOS MÉTODOS anadirUnidades(Integer):Boolean y quitarUnidades(...) ------------
