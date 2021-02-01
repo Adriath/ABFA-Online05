@@ -8,12 +8,21 @@ package utilidades;
 import java.util.regex.*;
 
 /**
- *
+ * Alberga métodos para validar datos, como por ejemplo, un DNI.
+ * 
  * @author Adrián Arjona
  * @version 1.0
  */
 
-public class ValidarDatos { // Comprueba DNI / NIE de personas físicas
+public class ValidarDatos {
+    
+    
+    /**
+     * Valida un DNI/NIE.
+     * 
+     * @param nif tipo String. DNI.
+     * @return tipo boolean. True si es válido, false si no.
+     */
     
     public static boolean validarNif(String nif){
         
@@ -55,9 +64,7 @@ public class ValidarDatos { // Comprueba DNI / NIE de personas físicas
         return valido ; 
     
     }
-    public static void main(String[] args) {
-        System.out.println(validarNif("535"));
-    }
+    
     
     // MÉTODO PARA COMPROBAR LA VARIABLE PRECIO DE LA CLASE PRODUCTO. HAY UNA NOTA EN EL CONSTRUCTOR DE LA CLASE.
     

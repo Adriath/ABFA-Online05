@@ -28,6 +28,7 @@ public class Cliente {
     
     // Declaración del constructor
     
+    
     /**
      * Constructor de la clase Cliente.
      * 
@@ -151,6 +152,7 @@ public class Cliente {
     
    // ID
    
+   
    /**
     * Muestra la identificación (NIF) del cliente.
     * 
@@ -164,8 +166,14 @@ public class Cliente {
     
     
     // Nombre
+   
     
-    public String getNombre(){ // Devuelve nombre
+   /**
+    * Muestra el nombre del cliente.
+    
+    * @return tipo String. Devuelve el nombre del cliente. 
+    */
+   public String getNombre(){
         
         return nombre ;
     }
@@ -173,13 +181,26 @@ public class Cliente {
         
     
     // Dirección
+   
+   /**
+    * Muestra la dirección del cliente.
+    * 
+    * @return tipo String. Devuelve la dirección del cliente.
+    */
     
-    public String getDireccion(){ // Devuelve dirección
+    public String getDireccion(){
         
         return direccion ;
     }
     
-    public void setDireccion(String dir){ // Almacena dirección
+    
+    /**
+     * Edita la dirección del cliente. No puede estar vacío.
+     * 
+     * @param dir tipo String. Dirección del cliente.
+     */
+    
+    public void setDireccion(String dir){
         
         boolean validador = false ;
         
@@ -205,10 +226,24 @@ public class Cliente {
     
     // Teléfono
     
-    public String getTelefono(){ // Devuelve teléfono
+    
+    /**
+     * Muestra el teléfono del cliente.
+     * 
+     * @return tipo String. Devuelve el teléfono del cliente.
+     */
+    
+    public String getTelefono(){
         
         return telefono ;
     }
+    
+    
+    /**
+     * Edita el teléfono del cliente. No puede estar vacío.
+     * 
+     * @param tlf tipo String. El teléfono del cliente.
+     */
     
     public void setTelefono(String tlf){ // Almacena teléfono
         

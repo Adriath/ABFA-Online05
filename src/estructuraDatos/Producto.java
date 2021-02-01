@@ -10,7 +10,8 @@ import utilidades.Color;
 import utilidades.IO_ES;
 
 /**
- *
+ * Esta clase sirve para crear un objeto del tipo Producto.
+ * 
  * @author Adrián Arjona
  * @version 1.0
  */
@@ -26,6 +27,19 @@ public class Producto {
     private String descripcion ;
     private double precio ;
     private int unidades ;
+    
+    // CONSTRUCTOR
+    
+    
+    /**
+     * Almacena datos de un producto.
+     * 
+     * @param cod tipo String. Código del producto. Debe tener 13 caracteres numéricos. Si no es válido su valor será "X".
+     * @param nom tipo String. Nombre del producto.
+     * @param des tipo String. Descripción del producto.
+     * @param precio tipo double. Precio del producto. No puede ser negativo.
+     * @param uni tipo int. Unidades del producto. No puede ser negativo.
+     */
     
     public Producto (String cod, String nom, String des, double precio, int uni){
         
@@ -81,12 +95,6 @@ public class Producto {
             
         } while (!validador);
         
-        
-        
-        
-        
-        
-        
         nombre = nom ; // NOMBRE
         descripcion = des ; // DESCRIPCIÓN
         
@@ -118,6 +126,13 @@ public class Producto {
         
     }
     
+    
+    /**
+     * Método para comprobar el código de un producto. Revisará que esté formado por 13 dígitos.
+     * 
+     * @param cod tipo String. Código del producto. Debe tener 13 caracteres numéricos.
+     * @return valido tipo boolean. Devolverá true si el código es válido y false si no lo es.
+     */
     
     public static boolean comprobarCodigo(String cod){
     
@@ -153,6 +168,12 @@ public class Producto {
     }
     
    
+    /**
+     * Añade unidades al producto.
+     * 
+     * @param uni tipo int. Unidades que se van a añadir.
+     * @return valido tipo boolean. Devuelve true si se añade con éxito y false en caso contrario.
+     */
     
     public boolean anadirUnidades(int uni){
         
@@ -179,7 +200,14 @@ public class Producto {
         return valido ;
     }
     
-        
+    
+    /**
+     * Elimina unidades de un producto siempre y cuando no supere el stock disponible.
+     * 
+     * @param uni tipo int. Unidades a eliminar.
+     * @return valido tipo boolean. Devuelve true si se lleva a cabo y false si se supera el stock o se introduce un valor negativo.
+     */
+    
     public boolean quitarUnidades(int uni){
         
         boolean valido ;
@@ -215,12 +243,25 @@ public class Producto {
     }
     
     
-    public static String getCodigo(){ // Devuelve código
+    /**
+     * Muestra el código del producto.
+     * 
+     * @return tipo int. Devuelve el código del producto.
+     */
+    
+    public static String getCodigo(){
         
         return codigo ;
     }
     
-    public void setCodigo(String cod){ // Almacena código
+    
+    /**
+     * Edita el código del producto después de validarlo.
+     * 
+     * @param cod tipo String. Código del cliente (13 caracteres numéricos).
+     */
+    
+    public void setCodigo(String cod){
         
         boolean valido ;
         boolean validador = false;
@@ -245,32 +286,74 @@ public class Producto {
                 
     }
     
-    public String getNombre(){ // Devuelve nombre
+    
+    /**
+     * Muestra el nombre del producto.
+     * 
+     * @return tipo String. Devuelve el nombre del producto.
+     */
+    
+    public String getNombre(){
         
         return nombre ;
     }
     
-    public void setNombre(String nom){ // Almacena nombre
+    
+    /**
+     * Edita nombre del producto.
+     * 
+     * @param nom tipo String. Nombre del producto.
+     */
+    
+    public void setNombre(String nom){
         
         nombre = nom ;
     }
     
-    public String getDescripcion(){ // Devuelve descripción
+    
+    /**
+     * Muestra la descripción del producto.
+     * 
+     * @return tipo String. Devuelve la descripción del producto.
+     */
+    
+    public String getDescripcion(){
         
         return descripcion ;
     }
     
-    public void setDescripcion(String des){ // Almacena descripción
+    
+    /**
+     * Edita la descripción del producto.
+     * 
+     * @param des tipo String. Descripción del producto.
+     */
+    
+    public void setDescripcion(String des){
         
         descripcion = des ;
     }    
     
-    public double getPrecio(){ // Devuelve precio
+    
+    /**
+     * Muestra el precio del producto.
+     * 
+     * @return tipo double. Devuelve el precio del producto.
+     */
+    
+    public double getPrecio(){
         
         return precio ;
     }
     
-    public void setPrecio(double precio){ // Almacena precio
+    
+    /**
+     * Edita el precio de un producto. No se puede introducir un precio negativo. En tal caso, el valor será 0.
+     * 
+     * @param precio tipo double. Precio del producto.
+     */
+    
+    public void setPrecio(double precio){
         
         /* NOTA: podría haber creado el método comprobarPrecio() dentro de la clase
         ValidarDatos para realizar la comprobación igual que con el código. 
@@ -302,7 +385,14 @@ public class Producto {
                 
     }
     
-    public int getUnidades(){ // Devuelve unidades
+    
+    /**
+     * Muestra las unidades de un producto.
+     * 
+     * @return  tipo int. Devuelve el stock del producto.
+     */
+    
+    public int getUnidades(){
         
         return unidades ;
     }
