@@ -171,6 +171,7 @@ public class Producto {
         else  //                    --> Si el número es positivo, se almacenará.
         {
             unidades += uni ;
+            IO_ES.escribirLN(Color.verde("Se ha(n) añadido " + uni + " unidad(es).") + "\n") ;
             valido = true ;
         }
             
@@ -198,6 +199,7 @@ public class Producto {
             if (unidades >= uni) // --> Si es el stock es positivo, se lleva a cabo la actualización.
             {
                 unidades -= uni ;
+                IO_ES.escribirLN(Color.verde("Se ha(n) eliminado " + uni + " unidad(es).") + "\n") ;
                 valido = true ;
             }
             else // --> Si el stock es negativo, no se lleva a cabo la actualización.
@@ -235,6 +237,7 @@ public class Producto {
             else // --> Si no es correcto volverá a pedirlo hasta que lo sea.
             {
                 IO_ES.escribirLN(Color.rojo("El código debe estar formado por números." + "\n"));
+                cod = IO_ES.leerCadena("Introduzca el código de nuevo, por favor: ", 13) ;
             }
         
         } while (!validador);
@@ -307,7 +310,8 @@ public class Producto {
     @Override
     public String toString(){
             
-        return "------------------------------" + 
+        return Color.cyan("PRODUCTO") + "\n" + 
+                "------------------------------" + 
                 "\n - Código del producto: " + Color.azul(codigo)+ 
                 "\n - Nombre: " + Color.azul(nombre) + 
                 "\n - Descripción: " + Color.azul(descripcion)+ 
@@ -316,5 +320,5 @@ public class Producto {
                 "\n------------------------------\n" ;
     }
     
-      
+     
 }

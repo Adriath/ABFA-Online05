@@ -225,7 +225,8 @@ public class Cliente {
     @Override
     public String toString(){
         
-        return "------------------------------" + 
+        return Color.cyan("CLIENTE") + "\n" + 
+                "------------------------------" +  
                 "\n - Id: " + Color.azul(this.id) + 
                 "\n - Nombre del cliente: " + Color.azul(nombre)+ 
                 "\n - Dirección del cliente: " + Color.azul(direccion)+ 
