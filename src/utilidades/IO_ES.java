@@ -15,7 +15,6 @@ import java.util.* ;
   - Como caso contrario, en la clase leerString() he adoptado el nuevo nombre del 
     ejercicio porque me parece más acertado (leerCadenas()).
   - He cambiado de orden los encabezados de los métodos: static public --> public static.
-  - He sustituido todos los parámetros mensaje por msg.
 
 */
 
@@ -108,6 +107,7 @@ public class IO_ES {
         
     }
     
+    
      /**
      * 
      * Pide al usuario un número entero mediante un mensaje personalizado y el mínimo aceptado.
@@ -160,6 +160,7 @@ public class IO_ES {
         return  numero;
         
     }
+    
     
     /**
      * Pide un número al usuario mediante un mensaje personalizado. El número debe estar comprendido entre los valores min y max.
@@ -722,10 +723,6 @@ public class IO_ES {
         
         return  resultado;
         
-    }
-    
-    public static void main(String[] args) {
-        System.out.println(leerBooleano());
     }
     
      /**

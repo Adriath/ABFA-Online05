@@ -179,13 +179,39 @@ public class Producto {
     }
     
         
-//    public boolean quitarUnidades(int uni){
-//        
-//        
-//        
-//    }
+    public boolean quitarUnidades(int uni){
+        
+        boolean valido ;
+        
+        while (uni == 0) // Si las unidades introducidas son igual a 0 se pedirá un número positivo para continuar.
+        {
+            uni = IO_ES.leerInteger(Color.rojo("El 0 no es válido. Introduzca una cantidad positiva: "), 1) ;
+        }
+        
+        if (uni < 0) //             --> Si el número es negativo indicará no se almacenará.
+        {
+            IO_ES.escribir(Color.rojo("No se ha realizado la actualicación de los datos." + "\n"));
+            valido = false ;
+        }
+        else  //                    --> Si el número es positivo, continúa la ejecución
+        {
+            if (unidades >= uni) // --> Si es el stock es positivo, se lleva a cabo la actualización.
+            {
+                unidades -= uni ;
+                valido = true ;
+            }
+            else // --> Si el stock es negativo, no se lleva a cabo la actualización.
+            {
+                IO_ES.escribirLN(Color.rojo("El stock no puede ser negativo. No se ha realizado la actualización de los datos." + "\n"));
+                valido = false ;
+            }
+        }
+                       
+        
+        return valido ;
+        
+    }
     
-    // --------- AQUÍ VAN LOS MÉTODOS anadirUnidades(Integer):Boolean y quitarUnidades(...) ------------
     
     public static String getCodigo(){ // Devuelve código
         
