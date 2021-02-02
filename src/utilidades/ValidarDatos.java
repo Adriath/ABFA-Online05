@@ -6,6 +6,7 @@
 package utilidades;
 
 import java.util.regex.*;
+import principal.* ;
 
 /**
  * Alberga métodos para validar datos, como por ejemplo, un DNI.
@@ -64,6 +65,7 @@ public class ValidarDatos {
         return valido ; 
     
     }
+    
     
     
     // MÉTODO PARA COMPROBAR LA VARIABLE PRECIO DE LA CLASE PRODUCTO. HAY UNA NOTA EN EL CONSTRUCTOR DE LA CLASE.
